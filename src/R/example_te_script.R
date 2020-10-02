@@ -68,7 +68,12 @@ temp6$distance <- rep(3000, nrow(temp6))
 # Rbind all together
 together <- rbind(temp0, temp1, temp2, temp3, temp4, temp5, temp6) %>% filter(count >20)
 
-# Plot
+# Plot across all superfamilies
 ggplot(together, aes(x=as.factor(distance), y=log10(count))) + 
+  geom_boxplot() +
+  xlab("Distance away from closest gene")
+
+# Color by superfamily
+ggplot(together, aes(x=as.factor(distance), y=log10(count), fill = sup)) + 
   geom_boxplot() +
   xlab("Distance away from closest gene")
